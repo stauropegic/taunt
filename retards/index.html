@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/ t a u n t </title>
+    <meta property="og:title" content="/ t a u n t • 挑発">
+    <meta property="og:description" content="June 6th, 2026">
+    <meta property="og:url" content="https://discord.gg/ccuVaPUvQh">
+    <meta property="og:image" content="https://i.gifer.com/origin/d6/d6791a23733dbfd5a6ead17a23858c7b_w200.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="128">
+    <meta property="og:image:height" content="128">
+    <meta property="theme-color" content="#2f3136">
+
+    <link rel="icon" type="image/x-icon" href="assets/taunt.ico">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="/ t a u n t • 挑発">
+    <meta name="twitter:description" content="May 3th, 2026">
+    <meta name="twitter:image" content="https://i.gifer.com/origin/d6/d6791a23733dbfd5a6ead17a23858c7b_w200.webp">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #000;
+  color: #fff;
+  font-family: "Courier New", monospace;
+
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* CRT overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* HEADER */
+.header {
+  padding: 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+/* GRID */
+/* GRID (desktop default stays 3 columns) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 20px;
+}
+
+/* ENTRY */
+.entry {
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 10px;
+  background: rgba(0,0,0,0.6);
+  transition: 0.15s ease;
+
+  /* important fix */
+  overflow: hidden;
+}
+
+.entry img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 8px;
+}
+
+/* TEXT WRAP FIX */
+.entry h2,
+.entry .user,
+.entry .bio {
+  word-break: break-word;
+  font-size: 12px;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+
+  .header {
+    font-size: 10px;
+    padding: 12px;
+  }
+
+  /* switch to 1 column for readability */
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .entry {
+    padding: 12px;
+  }
+
+  .entry h2 {
+    font-size: 14px;
+  }
+
+  .entry .bio,
+  .entry .user {
+    font-size: 11px;
+    opacity: 0.85;
+  }
+
+  /* make gate box fit better */
+  .box {
+    width: 92vw;
+    padding: 16px;
+  }
+
+  #enterBtn {
+    width: 100%;
+  }
+
+  #muteBtn {
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+  }
+}
+
+.entry:hover {
+  border-color: rgba(255,255,255,0.8);
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+#gate {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: "Courier New", monospace;
+}
+
+.box {
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 20px;
+  width: min(500px, 90vw);
+  text-align: center;
+}
+
+.title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+#enterBtn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#enterBtn:hover {
+  background: white;
+  color: black;
+}
+
+/* mute button */
+#muteBtn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  z-index: 10000;
+}
+.rainbow-text {
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #8000ff,
+        #ff0080,
+        #ff0000
+    );
+
+    background-size: 400% 100%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation: rainbow-scroll 8s linear infinite;
+}
+
+@keyframes rainbow-scroll {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 400% 50%;
+    }
+}
+#homeBtn {
+  position: fixed;
+  bottom: 15px;
+  right: 90px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+#homeBtn:hover {
+  background: white;
+  color: black;
+}
+</style>
+</head>
+
+<body>
+<div id="gate">
+  <div class="box">
+    <div class="title">Hall Of Autism</div>
+
+    <div class="text">
+      Every photo and piece of information is stored in this system archive.<br>
+      Access is logged automatically.
+    </div>
+
+    <button id="enterBtn">ENTER</button>
+  </div>
+</div>
+
+<audio id="bgm" loop>
+  <source src="assets/hoa/song.mp3" type="audio/mp3" volume="0.1">
+</audio>
+
+<button id="muteBtn">mute</button>
+<button id="homeBtn">home</button>
+<div class="header">
+/ t a u n t
+</div>
+
+<div class="grid">
+
+  <!--
+  <div class="entry">
+    <img src="assets/user1.png">
+    <h2 class="rainbow-text">usr</h2>
+    <div class="bio">bio goes here</div>
+  </div>
+  <div class="entry">
+    <img src="assets/user2.png">
+    <h2 class="rainbow-text">usr</h2>
+    <div class="bio">bio goes here</div>
+  </div>
+  <div class="entry">
+    <img src="assets/user3.png">
+    <h2 class="rainbow-text">usr</h2>
+    <div class="bio">bio goes here</div>
+  </div>
+-->
+</div>
+<script>
+const gate = document.getElementById("gate");
+const enterBtn = document.getElementById("enterBtn");
+const bgm = document.getElementById("bgm");
+const muteBtn = document.getElementById("muteBtn");
+bgm.volume = 0.5;
+let isMuted = false;
+
+enterBtn.addEventListener("click", async () => {
+  gate.style.display = "none";
+
+  try {
+    await bgm.play();
+  } catch (e) {
+    console.log("Audio blocked");
+  }
+});
+
+muteBtn.addEventListener("click", () => {
+  isMuted = !isMuted;
+  bgm.muted = isMuted;
+  muteBtn.textContent = isMuted ? "UNMUTE" : "MUTE";
+});
+const homeBtn = document.getElementById("homeBtn");
+
+homeBtn.addEventListener("click", () => {
+  window.location.href = "https://taunt.rest/home";
+});
+</script>
+</body>
+</html>

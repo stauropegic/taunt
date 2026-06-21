@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/ t a u n t </title>
+    <meta property="og:title" content="/ t a u n t • 挑発">
+    <meta property="og:description" content="June 6th, 2026">
+    <meta property="og:url" content="https://discord.gg/ccuVaPUvQh">
+    <meta property="og:image" content="https://i.gifer.com/origin/d6/d6791a23733dbfd5a6ead17a23858c7b_w200.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="128">
+    <meta property="og:image:height" content="128">
+    <meta property="theme-color" content="#2f3136">
+
+    <link rel="icon" type="image/x-icon" href="assets/taunt.ico">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="/ t a u n t • 挑発">
+    <meta name="twitter:description" content="May 3th, 2026">
+    <meta name="twitter:image" content="https://i.gifer.com/origin/d6/d6791a23733dbfd5a6ead17a23858c7b_w200.webp">
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  font-family: "Courier New", monospace;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* CRT scanlines */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.ascii {
+  white-space: pre;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.gallery {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  right: 20px;
+  bottom: 80px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+
+  overflow-y: auto;
+  padding-right: 10px;
+
+  align-items: start;
+}
+
+/* avatar container */
+.gallery a {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  line-height: 0;
+}
+
+/* avatars */
+.gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+
+  border: 1px solid rgba(255,255,255,0.6);
+
+  filter: contrast(1.1) brightness(0.85);
+  transition: transform .2s ease, filter .2s ease;
+
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* hover effect */
+.gallery a:hover img,
+.gallery a:focus img {
+  transform: scale(1.03);
+  filter: brightness(1.15);
+}
+
+/* iPhone */
+@media (max-width: 768px) {
+  .gallery {
+    top: 70px;
+    left: 12px;
+    right: 12px;
+    bottom: 70px;
+
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(140px, 1fr)
+    );
+
+    gap: 8px;
+    padding-right: 0;
+  }
+
+  .header {
+    left: 12px;
+    right: 12px;
+    font-size: 14px;
+  }
+
+  .back {
+    left: 12px;
+    bottom: 12px;
+  }
+}
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+#tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  background: rgba(0,0,0,0.95);
+  color: #e0e0e0;
+
+  border: 1px solid rgba(255,255,255,.4);
+  border-left: 3px solid white;
+
+  padding: 6px 10px;
+
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  text-shadow: 0 0 4px rgba(255,255,255,.35);
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,.08),
+    0 0 10px rgba(255,255,255,.08);
+
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  visibility: hidden;
+
+  z-index: 9999;
+
+  transition: opacity .12s ease;
+}
+/* home button */
+.back {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.2s;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* track (background rail) */
+::-webkit-scrollbar-track {
+  background: black;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+/* handle (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
+}
+
+/* hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.45);
+}
+
+/* corner (where horizontal + vertical meet) */
+::-webkit-scrollbar-corner {
+  background: black;
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) black;
+}
+button:hover {
+  background: white;
+  color: black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  Click on an image to Change into Avatar
+</div>
+
+<div class="gallery">
+
+  <a href="https://vrchat.com/home/avatar/avtr_9c7ead33-ae86-44fd-ba41-3f87a7702ee5"
+     target="_blank"
+     rel="noopener noreferrer"
+     data-tooltip="/taunt - 1 ; by fanta">
+
+    <img src="https://taunt.rest/assets/avi/taunt-1.png" alt="/taunt - 1">
+    <!-- first avatar + img | 21/06/26 ~ 10:0 PM - AEST-->
+
+  </a>
+
+  <!--
+  <a href="https://i.imgur.com/2.png"
+     target="_blank"
+     rel="noopener noreferrer"
+     data-tooltip="avatar name ; by author">
+
+    <img src="https://i.imgur.com/2.png" alt="avatar">
+
+  </a>
+  -->
+
+</div>
+
+<div class="back">
+  <button id="homeBtn">HOME</button>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+document.getElementById("homeBtn").onclick = () => {
+  window.location.href = "https://taunt.rest/home";
+};
+const tooltip = document.getElementById('tooltip');
+
+document.querySelectorAll('.gallery a').forEach(link => {
+
+  link.addEventListener('mouseenter', () => {
+    tooltip.textContent = link.dataset.tooltip;
+    tooltip.style.visibility = 'visible';
+    tooltip.style.opacity = '1';
+  });
+
+  link.addEventListener('mouseleave', () => {
+    tooltip.style.opacity = '0';
+    tooltip.style.visibility = 'hidden';
+  });
+
+  link.addEventListener('mousemove', (e) => {
+    const x = e.clientX + 16;
+    const y = e.clientY + 16;
+
+    tooltip.style.left =
+      Math.min(
+        x,
+        window.innerWidth - tooltip.offsetWidth - 10
+      ) + 'px';
+
+    tooltip.style.top =
+      Math.min(
+        y,
+        window.innerHeight - tooltip.offsetHeight - 10
+      ) + 'px';
+  });
+
+});
+</script>
+
+</body>
+</html>
