@@ -36,7 +36,6 @@ html, body {
     cursor: crosshair;
 }
 
-/* CRT overlay */
 body::before {
     content: "";
     position: fixed;
@@ -52,7 +51,7 @@ body::before {
     opacity: .25;
 }
 
-/* CENTER TERMINAL */
+
 .wrapper {
     width: 100%;
     height: 100%;
@@ -62,7 +61,7 @@ body::before {
     padding: 16px;
 }
 
-/* TERMINAL CARD */
+
 .card {
     width: min(900px, 95vw);
     border: 1px solid rgba(255,255,255,0.4);
@@ -71,7 +70,7 @@ body::before {
     box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
-/* ASCII */
+
 .ascii-art {
     white-space: pre;
     font-size: 12px;
@@ -188,14 +187,14 @@ button:hover {
         </pre>
 
         <div class="btn-row">
-            <button data-action="discord">discord</button>
-            <button data-action="avatars">avatars</button>
-            <button data-action="retards">retards</button>
+            <button data-action="discord">Discord</button>
+            <button data-action="avatars">Avatars</button>
+            <button data-action="clowns">Clowns</button>
         </div>
 
         <div class="taskbar">
             <span>root@taunt.rest:~/home$<div class="cursor"></div></span>
-            <span>v1.1</span>
+            <span>v1.2</span>
         </div>
 
     </div>
@@ -244,8 +243,11 @@ const actions = {
   avatars: () => {
     window.open("https://taunt.rest/avatars", "_blank");
   },
-  retards: () => {
-    window.open("https://taunt.rest/retards", "_blank");
+  clowns: () => {
+    window.open("https://taunt.rest/clowns", "_blank");
+  },
+  login: () => {
+    window.open("https://taunt.rest/login", "_blank");
   },
 };
 
