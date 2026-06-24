@@ -152,22 +152,25 @@ button:hover {
         width: 100%;
     }
 }
-
-@media (max-width: 380px) {
-    .ascii-art {
-        font-size: 5px;
-    }
+#homeBtn {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  z-index: 10000;
 }
-@keyframes blink {
-    0%,50% {
-        opacity: 1;
-    }
-    51%,100% {
-        opacity: 0;
-    }
+
+#homeBtn:hover {
+  background: white;
+  color: black;
 }
 </style>
-
+<button id="homeBtn">home</button>
 <div class="wrapper">
     <div class="card">
 
@@ -185,44 +188,21 @@ button:hover {
   ##.        #####   ########   #######  ##    ##    #####  
  :##         .####     ###.##    ###.##  ##    ##    .####  
         </pre>
-
-        <div class="btn-row">
-            <button data-action="discord">Discord</button>
-            <button data-action="avatars">Avatars</button>
-            <button data-action="clowns">Clowns</button>
-            <button data-action="credit">Credits</button>
-        </div>
-
-        <div class="taskbar">
-            <span>root@taunt.rest:~/home$<div class="cursor"></div></span>
-            <span>v1.2</span>
+            <div>
+                @stauropegic ; Main Developer And Owner of /taunt
+            </div>
+            <div>
+                @fallatical ; Developer and Co Owner of /taunt
+            </div>
         </div>
 
     </div>
 </div>
-
 <script>
+const homeBtn = document.getElementById("homeBtn");
 
-
-// ---------- buttons
-const actions = {
-  discord: () => window.open("https://discord.taunt.rest", "_blank"),
-  avatars: () => {
-    window.open("https://taunt.rest/avatars", "_blank");
-  },
-  clowns: () => {
-    window.open("https://taunt.rest/clowns", "_blank");
-  },
-  credit: () => {
-    window.open("https://taunt.rest/credits", "_blank");
-  },
-};
-
-document.querySelectorAll("button[data-action]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const action = btn.dataset.action;
-    if (actions[action]) actions[action]();
-  });
+homeBtn.addEventListener("click", () => {
+  window.location.href = "https://taunt.rest/home";
 });
 </script>
 </body>
